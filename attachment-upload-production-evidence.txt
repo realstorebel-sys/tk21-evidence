@@ -3,35 +3,34 @@ Trip PDF Attachment Upload — Sanitized Production Evidence
 
 Test: TEST/LOGISTICS-LIVE-PILOT-001
 isTest: true
-Evidence checked at (UTC): 2026-09-09T12:29:27.952Z
+Evidence checked at (UTC): 2026-09-10T08:54:56Z
 Environment: production
-Evidence status: PENDING PRODUCTION RETEST
+Evidence status: VERIFIED PRODUCTION RETEST
 
 Control facts:
 production Trip id (masked): 510b4ab6…b292
 production Trip id SHA-256: d5248926c00c5cff87cac605825b822c7eface319518f3cfd2d2539a75ed70d2
-upload attempt timestamp: PENDING
-upload success: false — no verified post-fix production upload
-attachment id (masked): NOT CREATED
-attachment id SHA-256: NOT AVAILABLE
-same Trip id: NOT VERIFIED
-persisted after refresh: false — not yet tested
-file open/read success: false — not yet tested
-audit event id/timestamp: NOT CREATED
-audit event SHA-256: NOT AVAILABLE
+upload attempt timestamp (UTC): 2026-09-10T08:21:00Z
+upload success: true
+attachment id (masked): d8cfe1e7…56bc
+attachment id SHA-256: fbd05c9815074faee3d3fedca19e5dd65d8b974b3bd0c60b6cc9d2ef03bdfc94
+same Trip id: true
+persisted after refresh: true — confirmed by a second independent production D1 read
+file open/read success: true
+file response: HTTP 200 · application/pdf · 198074 bytes · valid %PDF- signature
+file content SHA-256: f58b790201b786797c0cbbf56eeef81051e799be4a1ec8d7b0eb4ade2d6957ec
+audit event id (masked): a30af658…98ac
+audit event timestamp (UTC): 2026-09-10T08:21:00Z
+audit event action: upload_file
+audit event SHA-256: 500dc079c75aed4870daceb7ac137fbb0c7b5156e312cca65b02b530adc7700e
 
-Read-only production inspection:
-trip_request_documents matching this Trip: 0
-upload_file Audit Log events matching this Trip: 0
-existing Trip create/update Audit Log events: 3
-
-Required acceptance sequence:
-upload attempt -> success -> attachment id -> same Trip id -> persisted after refresh = true -> file open/read success = true -> audit event id/timestamp
+Verified acceptance sequence:
+upload attempt -> success -> attachment id -> same Trip id = true -> persisted after refresh = true -> file open/read success = true -> audit event
 
 Current verdict:
-Logistics Live Pilot — CONDITIONAL PASS
+Logistics Live Pilot — PASS
 P0: 0
-P1: 1 — Trip PDF attachment upload not yet confirmed by production retest
+P1: 0
 
 Privacy:
-No full internal identifiers, client data, tokens, credentials, uploaded files, document contents, or source code are published.
+Only masked identifiers and SHA-256 fingerprints are published. No full internal identifiers, client data, tokens, credentials, uploaded files, document contents, filenames, or source code are included.
